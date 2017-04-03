@@ -36,10 +36,13 @@ def sanitize(src, dst):
     # read and split each line of source file, write canonic word in destination file
     # if the type of the word is one of ACCEPTED_TYPES
     for line in src_file.readlines():
-        raw, type, word = line.split()
-        type = type.split(':')[0] # VER:pres -> VER
-        if type in ACCEPTED_TYPES:
-            dst_file.write(word + ' ')
+        try:
+            raw, type, word = line.split()
+            type = type.split(':')[0] # VER:pres -> VER
+            if type in ACCEPTED_TYPES:
+                dst_file.write(word + ' ')
+        except:
+            print('Unable to parse line: {}in file {}'.format(line, src))
 
     dst_file.close()
     src_file.close()
@@ -87,6 +90,6 @@ if __name__ == '__main__':
     try:
         folder = sys.argv[1]
     except:
-        folder = 'tagged_min'
+        folder = 'tagged'
 
     separate(folder)
