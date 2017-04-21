@@ -7,6 +7,10 @@ Classification de critique de film avec scikit-learn
 
 ## Utilisation
 
+### Extraction des données
+
+Décompressez l'archive `tagged.7z`
+
 ### Création des corpus
 
 ```
